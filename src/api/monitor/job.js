@@ -3,7 +3,7 @@ import request from '@/utils/request'
 // 查询定时任务调度列表
 export function listJob(query) {
   return request({
-    url: '/monitor/job/list',
+    url: '/api/v1/monitor/cronJob/list',
     method: 'get',
     params: query
   })
@@ -12,7 +12,7 @@ export function listJob(query) {
 // 查询定时任务调度详细
 export function getJob(jobId) {
   return request({
-    url: '/monitor/job/' + jobId,
+    url: '/api/v1/monitor/cronJob/' + jobId,
     method: 'get'
   })
 }
@@ -20,7 +20,7 @@ export function getJob(jobId) {
 // 新增定时任务调度
 export function addJob(data) {
   return request({
-    url: '/monitor/job',
+    url: '/api/v1/monitor/cronJob/create',
     method: 'post',
     data: data
   })
@@ -29,37 +29,29 @@ export function addJob(data) {
 // 修改定时任务调度
 export function updateJob(data) {
   return request({
-    url: '/monitor/job',
+    url: '/api/v1/monitor/cronJob/modify',
     method: 'put',
     data: data
   })
 }
 
 // 删除定时任务调度
-export function delJob(jobId) {
+export function delJob(jobId, funcAlias) {
   return request({
-    url: '/monitor/job/' + jobId,
+    url: `/api/v1/monitor/cronJob/${jobId}/${funcAlias}`,
     method: 'delete'
   })
 }
 
-// 导出定时任务调度
-export function exportJob(query) {
-  return request({
-    url: '/monitor/job/export',
-    method: 'get',
-    params: query
-  })
-}
-
 // 任务状态修改
-export function changeJobStatus(jobId, status) {
+export function changeJobStatus(jobId, funcAlias, status) {
   const data = {
     jobId,
+    funcAlias,
     status
   }
   return request({
-    url: '/monitor/job/changeStatus',
+    url: '/api/v1/monitor/cronJob/changeStatus',
     method: 'put',
     data: data
   })
@@ -67,13 +59,13 @@ export function changeJobStatus(jobId, status) {
 
 
 // 定时任务立即执行一次
-export function runJob(jobId, jobGroup) {
+export function runJob(jobId, funcAlias) {
   const data = {
     jobId,
-    jobGroup
+    funcAlias
   }
   return request({
-    url: '/monitor/job/run',
+    url: '/api/v1/monitor/cronJob/run',
     method: 'put',
     data: data
   })
