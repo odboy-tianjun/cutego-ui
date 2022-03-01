@@ -46,11 +46,12 @@ npm run build:stage
 npm run build:prod
 ```
 
-
-
 #### 参与贡献
 
 1.  Fork 本仓库
 2.  新建 Feat_xxx 分支
 3.  提交代码
 4.  新建 Pull Request
+
+## 支持
+如果觉得本项目还不错或在工作中有所启发，请在Gitee(码云)帮开发者点亮星星，这是对开发者最大的支持和鼓励！
